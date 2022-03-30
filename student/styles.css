@@ -13,8 +13,11 @@ th, tr {
 }
 
 .absent {
-    color: black;
+    color: lightgoldenrodyellow;
     font-weight: bold;
 }
 
+/* [v-cloak]{
+    display: none;
+} */
 
