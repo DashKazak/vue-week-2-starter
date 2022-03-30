@@ -44,13 +44,13 @@
                         <th>StarID</th>
                         <th>Present?</th>
                     </tr>
-                <tr v-for = "student in students" v-bind: class = "{present: student.present, absent: !student.present}">
-                    <td>{{student.name}}</td>
-                    <td>{{student.starID}}</td>
-                    <td>
-                        <input type="checkbox" v-model = "student.present" v-on:change="arrivedOrLeft(student)">
-                    </td>
-                </tr>
+                    <tr v-for = "student in students" v-bind:key="student.starID" v-bind: class = "{present: student.present, absent: !student.present}">
+                        <td>{{student.name}}</td>
+                        <td>{{student.starID}}</td>
+                        <td>
+                            <input type="checkbox" v-model = "student.present" v-on:change="arrivedOrLeft(student)">
+                        </td>
+                    </tr>
                    <!--  create table rows 
                    Each row will have a checkbox, bound to the app's data 
                    When the checkbox is checked/unchecked, the student will be signed in/out -->
@@ -61,7 +61,7 @@
 
 
         <!--  show a message when student arrives or leaves  -->
-        <div v-if="mostRecentStudent.name" >
+        <div v-show="mostRecentStudent.name" >
             <div class = "alert alert-info" v-if="mostRecentStudent.present">
                 Welcome, {{mostRecentStudent.name}}
             </div>
@@ -102,7 +102,7 @@
                     }
 
 
-                    if(this.errors.length === 0){
+                    if(this.errors.length == 0){
                     //add student
                         let student = {name: this.newStudentName, starID: this.newStarID, present:false}
                         this.students.push(student)
