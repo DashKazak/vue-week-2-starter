@@ -8,12 +8,12 @@ th, tr {
 }
 
 .present {
-    color: gray;
+    color: blue;
     font-style: italic;
 }
 
 .absent {
-    color: lightgoldenrodyellow;
+    color: lightcoral;
     font-weight: bold;
 }
 
