@@ -64,6 +64,7 @@
 
                 <div class="form-check-inline">
                     <!--  v-model medium -->
+                    <!-- match the values to the choices in your app - so work and school -->
                     <input id="media1" class="form-check-input" type="radio" value="Work" v-model="medium">
                     <label class="form-check-label" for="medium1">  Work </label>
                 </div>
@@ -117,7 +118,7 @@
                             <td>{{record.type}}</td>
                             <td>{{record.medium}}</td>
                             <td>{{record.completed}}</td>
-                            <td>{{textAreaLimit(notes)}}</td>
+                            <td>{{textAreaLimit(record.notes)}}</td>
                         </tr>
                     </table>
                 </div>
@@ -153,9 +154,12 @@
 
                     hours:1, 
                     type:'JavaScript', 
-                    medium:'school', 
 
-                    types:['Python','JavaScript','Career_Class', 'IT_Work', 'Video_Work'],
+                    // if this matches one of the radio button values, that radio button will be selected
+                    medium:'School', 
+
+                    // these can be human-readable strings, not necessary to be all one word
+                    types:['Python','JavaScript','Career Class', 'IT Work', 'Video Work'],
                     completed: false,
                     notes:" ",
                     errors:[]
@@ -212,10 +216,15 @@
                 },
                 textAreaLimit(notes){
 
+                    // use notes, the argument to this method. 
+                    // this.notes is the Vue data that is bound to the notes text area 
+                    // so it will show whatever the user types into the text area for each 
+                    // row, instead of the notes for this activity record.
+
                     under40char = notes.substring(1,40)
 
-                    if(this.notes.length>40){
-                        alert('hmmm maybe be more concise next time..')
+                    if(notes.length>40){
+                        alert('hmmm maybe be more concise next time..')  // :) 
                         return under40char + '...'
                     }
                     else{
